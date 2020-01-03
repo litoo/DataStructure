@@ -1,5 +1,8 @@
 package com.example.datastructure
 
+/**
+ * leetcode 20
+ */
 class Solution {
     fun isValid(s: String): Boolean {
         val stack = mutableListOf<Char>()
