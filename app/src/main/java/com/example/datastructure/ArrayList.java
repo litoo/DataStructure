@@ -113,6 +113,10 @@ public class ArrayList<E> {
         }
         size--;
         data[size] = null;//引用gc
+
+        if (size == data.length / 4){//防止1/2复杂度震荡
+            data = Arrays.copyOf(data, getCapacity() - getCapacity() >> 1);//缩容一半
+        }
         return oldValue;
     }
 
