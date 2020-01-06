@@ -1,7 +1,5 @@
 package com.example.datastructure;
 
-import java.util.ArrayList;
-
 public class ArrayQueue<E> implements Queue{
     ArrayList<E> arrayList;
     public  ArrayQueue(int capacity){
@@ -14,7 +12,7 @@ public class ArrayQueue<E> implements Queue{
 
     @Override
     public int getSize() {
-        return arrayList.size();
+        return arrayList.getSize();
     }
 
     @Override
@@ -22,18 +20,20 @@ public class ArrayQueue<E> implements Queue{
         return arrayList.isEmpty();
     }
 
+    //入队
     @Override
     public void enQueue(Object e) {
+        arrayList.addLast((E)e);
     }
 
-
+    //出队
     @Override
     public Object deQueue() {
-        return arrayList.remove(0);
+        return arrayList.removeLast();
     }
 
     @Override
     public Object getFront() {
-        return arrayList.get(0);
+        return arrayList.getFrist();
     }
 }
