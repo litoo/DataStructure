@@ -34,6 +34,6 @@ public class ArrayQueue<E> implements Queue{
 
     @Override
     public Object getFront() {
-        return arrayList.getFrist();
+        return arrayList.removeFirst();
     }
 }

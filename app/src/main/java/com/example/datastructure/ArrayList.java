@@ -77,13 +77,6 @@ public class ArrayList<E> {
         return data[index];
     }
 
-    public E getFrist(){
-        if (!isEmpty()){
-            return data[0];
-        }
-        return null;
-    }
-
     //修改元素
     public void set(int index, E e) {
         if (index < 0 || index >= size)
