@@ -1,5 +1,9 @@
 package com.example.datastructure;
 
+/**
+ * 数组队列 出队复杂度O(n)
+ * @param <E>
+ */
 public class ArrayQueue<E> implements Queue{
     ArrayList<E> arrayList;
     public  ArrayQueue(int capacity){
