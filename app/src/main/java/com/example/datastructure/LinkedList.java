@@ -2,14 +2,15 @@ package com.example.datastructure;
 
 /**
  * 单链表
+ * 添加虚拟头节点，省略对头节点的特殊处理
  */
 public class LinkedList<E> {
 
     private int size;
-    private Node head;
+    private Node dummyHead;
 
     public LinkedList() {
-        head = null;
+        dummyHead = new Node();//初始化虚拟头节点占位，但是链表长度还是0
         size = 0;
     }
 
@@ -17,42 +18,37 @@ public class LinkedList<E> {
         return size;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
     //头部添加元素
     public void addFirst(E e) {
-        head = new Node(e, head);
-        size++;
+        add(0, e);
     }
 
     public void add(int index, E e) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("索引位置非法");
         }
-        if (index == 0) {
-            addFirst(e);//单链表头没有前节点
-        } else {
-            Node prev = head;
-            //找到前节点
-            for (int i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
-            prev.next = new Node(e, prev.next);
+        Node prev = dummyHead;
+        //找到前节点
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        prev.next = new Node(e, prev.next);
 //            Node node = new Node(e);
 //            node.next = prev.next;
 //            prev.next = node;
-            size++;
-        }
-
+        size++;
     }
 
+    //声明default包内可用
     private class Node {
-        public E e;
-        public Node next;
+        E e;
+        Node next;
 
-        public Node(E e, Node next) {
+        Node(E e, Node next) {
             this.e = e;
             this.next = next;
         }
