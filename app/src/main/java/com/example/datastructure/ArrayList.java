@@ -50,7 +50,7 @@ public class ArrayList<E> {
     //索引位置插入元素
     public void add(int index, E e) {
 
-        if (index < 0 || index > size)
+        if (index < 0 || index >= size)
             throw new IndexOutOfBoundsException();
 
         if (size == data.length)

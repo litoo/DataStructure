@@ -27,8 +27,21 @@ public class LinkedList<E> {
         add(0, e);
     }
 
+    public E get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("索引位置非法");
+        }
+
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
+    }
+
+    //添加元素
     public void add(int index, E e) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {//fix 从0开始
             throw new IndexOutOfBoundsException("索引位置非法");
         }
         Node prev = dummyHead;
