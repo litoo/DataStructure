@@ -148,4 +148,8 @@ public class ArrayList<E> {
 
         size = 0;
     }
+
+    public E getFrist() {
+        return get(0);
+    }
 }

@@ -33,11 +33,11 @@ public class ArrayQueue<E> implements Queue{
     //出队
     @Override
     public Object deQueue() {
-        return arrayList.removeLast();
+        return arrayList.removeFirst();
     }
 
     @Override
     public Object getFront() {
-        return arrayList.removeFirst();
+        return arrayList.getFrist();
     }
 }

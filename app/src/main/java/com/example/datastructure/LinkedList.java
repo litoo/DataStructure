@@ -1,5 +1,7 @@
 package com.example.datastructure;
 
+import androidx.annotation.NonNull;
+
 /**
  * 单链表
  * 添加虚拟头节点，省略对头节点的特殊处理
@@ -27,21 +29,31 @@ public class LinkedList<E> {
         add(0, e);
     }
 
+    //获取指定位置元素
     public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("索引位置非法");
         }
 
         Node cur = dummyHead.next;
+        //找到当前索引位置元素
         for (int i = 0; i < index; i++) {
             cur = cur.next;
         }
         return cur.e;
     }
 
+    public E getFrist() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size - 1);
+    }
+
     //添加元素
     public void add(int index, E e) {
-        if (index < 0 || index >= size) {//fix 从0开始
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("索引位置非法");
         }
         Node prev = dummyHead;
@@ -54,6 +66,30 @@ public class LinkedList<E> {
 //            node.next = prev.next;
 //            prev.next = node;
         size++;
+    }
+
+    //链表不常用 修改指定元素
+    public void set(int index, E e) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("索引位置非法");
+        }
+        Node cur= dummyHead.next;
+        //找到当前索引位置元素
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        cur.e = e;
+    }
+
+    public boolean contains(E e){
+        Node cur = dummyHead.next;
+        while (cur!=null){
+            if (cur.e.equals(e)){
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
     }
 
     //声明default包内可用
@@ -75,4 +111,18 @@ public class LinkedList<E> {
         }
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        Node cur= dummyHead.next;
+        while (cur!=null){
+            builder.append(cur + "->");
+            cur = cur.next;
+        }
+
+//        for (cur = dummyHead.next; cur!= null;cur = cur.next)
+//            builder.append(cur + "->");
+        return builder.toString();
+    }
 }
