@@ -1,21 +1,13 @@
 package com.example.datastructure;
 
-import java.util.Vector;
-
 /**
  * 栈
  */
-public class Stack<E> extends Vector {
+public interface Stack<E>{
 
-    public Stack() {
-    }
-
-    public int size() {
-        return size();
-    }
-
-    public void push() {
-
-    }
-
+    int getSize();
+    E pop();
+    void push(E e);
+    E peek();
+    boolean isEmpty();
 }

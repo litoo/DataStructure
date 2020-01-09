@@ -4,7 +4,7 @@ package com.example.datastructure;
  * 数组队列 出队复杂度O(n)
  * @param <E>
  */
-public class ArrayQueue<E> implements Queue{
+public class ArrayQueue<E> implements Queue<E>{
     ArrayList<E> arrayList;
     public  ArrayQueue(int capacity){
         arrayList = new ArrayList<>(capacity);
@@ -26,18 +26,18 @@ public class ArrayQueue<E> implements Queue{
 
     //入队
     @Override
-    public void enQueue(Object e) {
-        arrayList.addLast((E)e);
+    public void enQueue(E e) {
+        arrayList.addLast(e);
     }
 
     //出队
     @Override
-    public Object deQueue() {
+    public E deQueue() {
         return arrayList.removeFirst();
     }
 
     @Override
-    public Object getFront() {
+    public E getFront() {
         return arrayList.getFrist();
     }
 }
