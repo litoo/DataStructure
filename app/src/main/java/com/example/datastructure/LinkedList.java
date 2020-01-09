@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 /**
  * 单链表
  * 添加虚拟头节点，省略对头节点的特殊处理
- * 只有addfrist复杂度为O(1) 其他都是O(n)
+ * 只有头节点增删复杂度为O(1) 其他都是O(n)
  */
 public class LinkedList<E> {
 
