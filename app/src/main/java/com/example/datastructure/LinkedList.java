@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 /**
  * 单链表
  * 添加虚拟头节点，省略对头节点的特殊处理
+ * 只有addfrist复杂度为O(1) 其他都是O(n)
  */
 public class LinkedList<E> {
 
@@ -73,7 +74,7 @@ public class LinkedList<E> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("索引位置非法");
         }
-        Node cur= dummyHead.next;
+        Node cur = dummyHead.next;
         //找到当前索引位置元素
         for (int i = 0; i < index; i++) {
             cur = cur.next;
@@ -81,15 +82,39 @@ public class LinkedList<E> {
         cur.e = e;
     }
 
-    public boolean contains(E e){
+    public boolean contains(E e) {
         Node cur = dummyHead.next;
-        while (cur!=null){
-            if (cur.e.equals(e)){
+        while (cur != null) {
+            if (cur.e.equals(e)) {
                 return true;
             }
             cur = cur.next;
         }
         return false;
+    }
+
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("索引位置非法");
+        }
+
+        Node prev = dummyHead;
+        //找到前节点
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node ret = prev.next;
+        prev.next = ret.next;
+        ret.next = null;//gc
+        return ret.e;
+    }
+
+    public E removeFrist(){
+        return remove(0);
+    }
+
+    public E removeLast(){
+        return remove(size - 1);
     }
 
     //声明default包内可用
@@ -115,8 +140,8 @@ public class LinkedList<E> {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        Node cur= dummyHead.next;
-        while (cur!=null){
+        Node cur = dummyHead.next;
+        while (cur != null) {
             builder.append(cur + "->");
             cur = cur.next;
         }
