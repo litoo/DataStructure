@@ -18,8 +18,9 @@ public class LeetCode {
 
     class Solution {
         public ListNode removeElements(ListNode head, int val) {
-            ListNode prev = new ListNode(-1);
-            prev.next = head;
+            ListNode dummyHead = new ListNode(-1);
+            dummyHead.next = head;
+            ListNode prev = dummyHead;
             while (prev.next != null) {
                 if (prev.next.val == val) {//可删除元素
                     prev.next = prev.next.next;
@@ -27,7 +28,7 @@ public class LeetCode {
                     prev = prev.next;
                 }
             }
-            return head;
+            return dummyHead.next;
         }
     }
 }
