@@ -1,15 +1,18 @@
 package com.example.datastructure
 
 /**
- * leetcode 20
+ * leetcode
  */
 class Solution {
+    /**
+     * 20
+     */
     fun isValid(s: String): Boolean {
         val stack = mutableListOf<Char>()
         for (i in 0 until s.length) {
-            if (s[i] == '{' || s[i] == '[' || s[i] == '('){
+            if (s[i] == '{' || s[i] == '[' || s[i] == '(') {
                 stack.add(s[i])
-            }else {
+            } else {
                 if (stack.isEmpty())
                     return false
                 val popStr = stack.last()
