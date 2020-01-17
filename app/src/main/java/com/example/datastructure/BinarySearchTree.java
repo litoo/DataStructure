@@ -47,6 +47,41 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return node;
     }
 
+    //查找
+    public boolean contains(E e) {
+        return contains(root, e);
+    }
+
+    private boolean contains(Node node, E e) {
+        if (node == null) {
+            return false;
+        }
+
+        if (node.e.compareTo(e) == 0) {
+            return true;
+        } else if (e.compareTo(node.e) < 0) {
+            return contains(node.left, e);
+        } else {
+            return contains(node.right, e);
+        }
+    }
+
+    //前序遍历
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    //遍历以node为根的树
+    private void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        preOrder(node.left);
+        preOrder(node.right);
+
+    }
+
     public boolean isEmpty() {
         return size == 0;
     }
