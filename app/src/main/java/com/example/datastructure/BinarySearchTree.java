@@ -1,5 +1,7 @@
 package com.example.datastructure;
 
+import android.util.Log;
+
 /**
  * 二分搜索树
  * 不包含重复元素
@@ -76,10 +78,33 @@ public class BinarySearchTree<E extends Comparable<E>> {
         if (node == null) {
             return;
         }
-
+        Log.d("访问节点", node.e.toString());
         preOrder(node.left);
         preOrder(node.right);
 
+    }
+
+    //中序遍历,元素排序后的结果
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    private void inOrder(Node node){
+        inOrder(node.left);
+        Log.d("访问节点", node.e.toString());
+        inOrder(node.right);
+    }
+
+
+    //后序遍历
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    private void postOrder(Node node){
+        postOrder(node.left);
+        postOrder(node.right);
+        Log.d("访问节点", node.e.toString());
     }
 
     public boolean isEmpty() {
