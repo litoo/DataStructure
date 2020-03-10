@@ -89,7 +89,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         inOrder(root);
     }
 
-    private void inOrder(Node node){
+    private void inOrder(Node node) {
         inOrder(node.left);
         Log.d("访问节点", node.e.toString());
         inOrder(node.right);
@@ -101,7 +101,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         postOrder(root);
     }
 
-    private void postOrder(Node node){
+    private void postOrder(Node node) {
         postOrder(node.left);
         postOrder(node.right);
         Log.d("访问节点", node.e.toString());
@@ -109,6 +109,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     private class Node {
