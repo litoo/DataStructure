@@ -1,7 +1,7 @@
 package com.example.datastructure;
 
 /**
- * 基于链表的Set
+ * 基于链表的Set 复杂度O（n）
  */
 public class LinkedListSet<E> implements Set<E>{
     private LinkedList<E> linkedList;
@@ -20,7 +20,7 @@ public class LinkedListSet<E> implements Set<E>{
         return linkedList.isEmpty();
     }
 
-    //链表本身不去重
+    //链表本身不去重，遍历所有元素去重
     @Override
     public void add(E e) {
         if (!linkedList.contains(e)){

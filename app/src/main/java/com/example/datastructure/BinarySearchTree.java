@@ -8,6 +8,22 @@ import android.util.Log;
  * <p>
  * 每个节点值大于左子树所有节点的值，小于右子树所有节点的值
  * 每棵子树都是二分搜索树
+ *
+ * 平均时间复杂度O（logn）最差O（n）
+ * 分析需要树深度的比较 O（h）
+ * h层一共 2^h -1 节点
+ * 2^h -1 = n
+ * h = log2(n + 1)   //logn
+ *
+ * 相同数据可以创建出不同的二分搜索树
+ * 1.2.3.4.5.6
+ *                 最差情况相当于链表O（n）
+ *     4            1
+ *  2     5           2
+ * 1 3      6           3
+ *                        4
+ *                          5
+ *                            6
  */
 public class BinarySearchTree<E extends Comparable<E>> {
 
