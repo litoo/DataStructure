@@ -152,4 +152,13 @@ public class ArrayList<E> {
     public E getFrist() {
         return get(0);
     }
+
+    //交换顺序
+    public void swap(int i, int j){
+        if (i < 0 || i >= size || j < 0 || j >= size )
+            throw new IndexOutOfBoundsException();
+        E t = data[i];
+        data[i] = data[j];
+        data[i] = t;
+    }
 }
