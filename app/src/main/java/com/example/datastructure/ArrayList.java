@@ -24,6 +24,14 @@ public class ArrayList<E> {
         size = 0;
     }
 
+    public ArrayList(E[] arr) {
+        data =  (E[]) new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
     //包含元素数
     public int getSize() {
         return size;
