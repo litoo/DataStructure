@@ -3,23 +3,27 @@ package com.example.datastructure;
 /**
  * 并查集1
  * quick find
+ *
+ * 0 1 2 3 4   元素（int表示）
+ * ---------
+ * 0 1 0 1 0  id
  */
 public class UnionFind1 implements UnionFind {
 
-    private int[] id;
+    private int[] id;//存储元素是否属于一个集合
 
     public UnionFind1(int size) {
         this.id = new int[size];
         for (int i = 0; i < size; i++) {
-            id[i] = i;//设置每个元素的id都不相同
+            id[i] = i;//设置每个元素都是独立的，id都不相同
         }
     }
 
     /**
-     * 根据id查找元素，循环产生的id是连续的，只需要控制越界
+     * 查找元素id，目前循环产生的元素 和 id是连续的，只需要控制越界
      * O(1)
      *
-     * @param p id索引
+     * @param p  元素
      * @return
      */
     private int find(int p) {
@@ -63,6 +67,6 @@ public class UnionFind1 implements UnionFind {
 
         for (int i = 0; i < id.length; i++)
             if (id[i] == pID)
-                id[i] = qID;//把所有p的索引都改成q的实现关联
+                id[i] = qID;//把所有p的id都改成q的id，实现关联
     }
 }
