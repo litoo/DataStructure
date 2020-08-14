@@ -1,20 +1,19 @@
 package com.example.datastructure;
 
 /**
- * 并查集2
- * quick union
- *
- * 内部结构是数组形成的多颗树,孩子指向父亲节点
- *
- * 这个版本的并查集有个问题，合并的时候都是按照p的根节点往q的根节点上连接，可能会导致p树越来越深
+ * 对并查集2的优化版
+ * 优化 size优化，节点个数少的树合并到节点个数多的树
  */
-public class UnionFind2 implements UnionFind {
+public class UnionFind3 implements UnionFind {
     private int[] parent;
+    private int[] sz;
 
-    public UnionFind2(int size) {
+    public UnionFind3(int size) {
         this.parent = new int[size];
+        this.sz = new int[size];
         for (int i = 0; i < size; i++) {
             parent[i] = i;//初始化，每个元素独立都是一个根节点指向自己
+            sz[i] = 1;
         }
     }
 
@@ -38,13 +37,20 @@ public class UnionFind2 implements UnionFind {
         if (pRoot == qRoot)
             return;
 
-        parent[pRoot] = parent[qRoot];
+        if (sz[pRoot] < sz[qRoot]) {//p节点少，p树指向q树根节点，q树节点增加
+            parent[pRoot] = parent[qRoot];
+            sz[qRoot] += sz[pRoot];
+        } else {
+            parent[qRoot] = parent[pRoot];
+            sz[pRoot] += sz[qRoot];
+        }
     }
 
     /**
-     * 初始每个元素的父亲节点都是自己,unionEle之后就会形成树型结构
      * 查找根节点即遍历树深度
-     * O(h)
+     * 初始每个元素的父亲节点都是自己,unionEle之后就会形成树型结构
+     * 复杂度：O(h)
+     *
      * @param p
      * @return
      */
