@@ -1,20 +1,19 @@
 package com.example.datastructure;
 
 /**
- * 对并查集2的优化版
- * 优化 size优化，节点个数少的树合并到节点个数多的树
- * 这种优化方式有缺点，深度深节点个数不一定多
+ * 并查集
+ * 基于树深度的优化，深度低的树合并到深度高的树上
  */
-public class UnionFind3 implements UnionFind {
+public class UnionFind4 implements UnionFind {
     private int[] parent;
-    private int[] sz;
+    private int[] rank;
 
-    public UnionFind3(int size) {
+    public UnionFind4(int size) {
         this.parent = new int[size];
-        this.sz = new int[size];
+        this.rank = new int[size];
         for (int i = 0; i < size; i++) {
             parent[i] = i;//初始化，每个元素独立都是一个根节点指向自己
-            sz[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -38,12 +37,13 @@ public class UnionFind3 implements UnionFind {
         if (pRoot == qRoot)
             return;
 
-        if (sz[pRoot] < sz[qRoot]) {//p节点少，p树指向q树根节点，q树节点增加
+        if (rank[pRoot] < rank[qRoot]) {//低深度合并入高深度的树，树的深度不变
             parent[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
+        } else if (rank[qRoot] < rank[pRoot]) {
+            parent[qRoot] = pRoot;
         } else {
             parent[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+            rank[qRoot] += 1;
         }
     }
 

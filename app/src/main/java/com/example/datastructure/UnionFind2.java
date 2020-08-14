@@ -6,7 +6,7 @@ package com.example.datastructure;
  *
  * 内部结构是数组形成的多颗树,孩子指向父亲节点
  *
- * 这个版本的并查集有个问题，合并的时候都是按照p的根节点往q的根节点上连接，可能会导致p树越来越深
+ * 这个版本的并查集有个问题，合并的时候都是按照p的根节点往q的根节点上连接，可能会导致p树越来越深极端情况下是链表
  */
 public class UnionFind2 implements UnionFind {
     private int[] parent;
@@ -38,7 +38,7 @@ public class UnionFind2 implements UnionFind {
         if (pRoot == qRoot)
             return;
 
-        parent[pRoot] = parent[qRoot];
+        parent[pRoot] = qRoot;
     }
 
     /**
