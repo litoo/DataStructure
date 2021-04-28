@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn.setOnClickListener {
-            text.text = Arrays.toString(BubbleSort.sort(intArrayOf(1, 4, 542, 2, 6, 73)))
+            text.text = Arrays.toString(SelectionSort.selectionSort(intArrayOf(4, 542, 2, 6, 73, 1)))
         }
     }
 }
