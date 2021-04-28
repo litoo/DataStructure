@@ -1,25 +1,17 @@
-package com.example.datastructure;
+package com.example.datastructure
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
+import android.os.Bundle
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        TextView text =  findViewById(R.id.text);
-        text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Solution().isValid("[([]])");
-            }
-        });
-
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        btn.setOnClickListener {
+            text.text = Arrays.toString(BubbleSort.sort(intArrayOf(1, 4, 542, 2, 6, 73)))
+        }
     }
-
 }
