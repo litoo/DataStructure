@@ -1,4 +1,4 @@
-package com.example.datastructure;
+package com.example.datastructure.sort;
 
 /**
  * 十大经典排序

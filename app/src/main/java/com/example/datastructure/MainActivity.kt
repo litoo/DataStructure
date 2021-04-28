@@ -1,8 +1,9 @@
 package com.example.datastructure
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.datastructure.sort.InsertionSort
+import com.example.datastructure.sort.SelectionSort
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn.setOnClickListener {
-            text.text = Arrays.toString(SelectionSort.selectionSort(intArrayOf(4, 542, 2, 6, 73, 1)))
+            text.text = Arrays.toString(InsertionSort.insertionSort(intArrayOf(4, 542, 2, 6, 73, 1)))
         }
     }
 }
